@@ -1,12 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix google</title>
-    <link rel="stylesheet" href="./assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="RibbonLab is an educational HTML/CSS transform study that reconstructs a red ribbon-style N mark using pure CSS geometry."
+  >
+  <meta name="color-scheme" content="light dark">
+  <title>RibbonLab — CSS Transform & Shadow Study</title>
+  <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
-    <span class="netflix" ></span>
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">HTML + CSS transform study</p>
+      <h1>RibbonLab</h1>
+      <p class="subtitle">
+        An interactive reconstruction lab for a red ribbon-style N mark. Explore skew,
+        overlap, proportions, crop masks, and shadow depth without SVG or canvas.
+      </p>
+    </div>
+    <p class="disclaimer">
+      Unofficial educational exercise. No affiliation with Netflix.
+    </p>
+  </header>
+
+  <main id="workspace" class="workspace">
+    <section class="preview-panel" aria-labelledby="preview-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Preview</p>
+          <h2 id="preview-title">Ribbon geometry</h2>
+        </div>
+        <button id="reset" class="secondary-button" type="button">Reset</button>
+      </div>
+
+      <div class="mark-stage" data-background="charcoal">
+        <span class="guide guide-x" aria-hidden="true"></span>
+        <span class="guide guide-y" aria-hidden="true"></span>
+
+        <div
+          class="ribbon-mark"
+          role="img"
+          aria-label="Unofficial red N-shaped ribbon reconstruction built with CSS"
+        >
+          <span class="ribbon-column ribbon-column-left" aria-hidden="true"></span>
+          <span class="ribbon-diagonal" aria-hidden="true"></span>
+          <span class="ribbon-column ribbon-column-right" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls-panel" aria-labelledby="controls-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Controls</p>
+          <h2 id="controls-title">Tune the transform</h2>
+        </div>
+      </div>
+
+      <div class="control-list">
+        <label class="control-row" for="height">
+          <span>Mark height</span>
+          <strong data-height-value>260px</strong>
+          <input id="height" type="range" value="260">
+        </label>
+
+        <label class="control-row" for="column">
+          <span>Column width</span>
+          <strong data-column-value>48px</strong>
+          <input id="column" type="range" value="48">
+        </label>
+
+        <label class="control-row" for="skew">
+          <span>Diagonal skew</span>
+          <strong data-skew-value>19.6°</strong>
+          <input id="skew" type="range" step="0.1" value="19.6">
+        </label>
+
+        <label class="control-row" for="shadow">
+          <span>Shadow depth</span>
+          <strong>Soft</strong>
+          <input id="shadow" type="range" value="24">
+        </label>
+
+        <label class="select-row" for="background">
+          <span>Stage</span>
+          <select id="background">
+            <option value="charcoal">Charcoal</option>
+            <option value="black">Black</option>
+            <option value="paper">Paper</option>
+          </select>
+        </label>
+
+        <label class="toggle-row" for="guides">
+          <span>
+            <strong>Center guides</strong>
+            <small>Reveal the mark’s visual axes.</small>
+          </span>
+          <input id="guides" type="checkbox">
+        </label>
+      </div>
+
+      <dl class="metrics">
+        <div>
+          <dt>Aspect ratio</dt>
+          <dd data-ratio-value>0.538</dd>
+        </div>
+        <div>
+          <dt>Rendering</dt>
+          <dd>CSS only</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="code-panel" aria-labelledby="code-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Generated output</p>
+          <h2 id="code-title">CSS variables</h2>
+        </div>
+        <button id="copy-css" class="secondary-button" type="button">Copy CSS</button>
+      </div>
+
+      <pre><code id="css-output"></code></pre>
+      <p class="code-note">
+        JavaScript controls only the CSS custom properties. The visual mark is rendered by
+        regular elements, transforms, gradients, masks, and box shadows.
+      </p>
+    </section>
+
+    <section class="explain-panel" aria-labelledby="explain-title">
+      <div>
+        <p class="eyebrow">Technique</p>
+        <h2 id="explain-title">From columns to ribbon.</h2>
+      </div>
+
+      <div class="explain-grid">
+        <article>
+          <strong>01 / Columns</strong>
+          <p>Two vertical red rails establish the outside silhouette and the overall height.</p>
+        </article>
+        <article>
+          <strong>02 / Diagonal</strong>
+          <p>A skewed central strip bridges the rails and creates the ribbon-like depth cue.</p>
+        </article>
+        <article>
+          <strong>03 / Layering</strong>
+          <p>Gradients and shadow make overlapping red surfaces read as separate folds.</p>
+        </article>
+        <article>
+          <strong>04 / Crop</strong>
+          <p>A curved bottom mask softens the baseline and keeps the study visually balanced.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <p class="sr-only" data-status aria-live="polite"></p>
+
+  <footer>
+    <span>RibbonLab</span>
+    <span>HTML · CSS transforms · Vanilla JavaScript · Node tests</span>
+  </footer>
+
+  <script type="module" src="./assets/main.js"></script>
 </body>
 </html>
